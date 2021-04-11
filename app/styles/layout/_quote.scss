@@ -1,0 +1,96 @@
+.quote {
+    padding: 7rem 0;
+    background-color: $gray-color;
+    &-item {
+        @include flex(flex-end);
+        padding: 0 7.5rem;
+        outline: none;
+    }
+    // Slick slider
+    .slick-initialized .slick-slide {
+        display: flex;
+    }
+    .slick-arrow {
+        color: $gray-dark-color;
+        font-size: 2.4rem;
+        cursor: pointer;
+        background-color: transparent;
+        border: 0;
+        z-index: 10;
+    }
+    .slick-prev {
+        @include positionCenter("left");
+    }
+    .slick-next {
+        @include positionCenter("right");
+    }
+    &-image {
+        @include size(21rem);
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 3rem;
+    }
+    &-icon {
+        @include size(15rem);
+        border: 4px solid $third-color;
+        padding: 4rem;
+        margin-right: 6rem;
+        flex-shrink: 0;
+    }
+    &-desc {
+        font-family: $secondary-font;
+        color: $text-color;
+        font-size: 2.4rem;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.4;
+        margin-bottom: 3rem;
+        @include textClamp(3);
+    }
+    &-author {
+        font-size: 2.4rem;
+        color: $title-color;
+        font-family: $third-font;
+        padding-left: 7rem;
+        position: relative;
+        &::before {
+            content: "";
+            width: 6rem;
+            height: 0.4rem;
+            background-color: $primary-color;
+            @include positionCenter("left");
+        }
+    }
+    @include maxWidth(767px) {
+        &-arrow-left,
+        &-arrow-right {
+            display: none;
+        }
+        &-item {
+            padding: 0.5rem;
+            flex-direction: column;
+        }
+        &-image {
+            margin: 0 auto;
+        }
+        &-icon {
+            margin: 0 auto;
+            max-width: 50%;
+        }
+        &-info {
+            margin-top: 3rem;
+        }
+        &-desc {
+            display: block;
+            font-size: 1.6rem;
+        }
+        &-author {
+            font-size: 2rem;
+            padding-left: 5rem;
+            &::before {
+                width: 4.5rem;
+                height: 3px;
+            }
+        }
+    }
+}

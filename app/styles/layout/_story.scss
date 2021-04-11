@@ -1,0 +1,95 @@
+.story {
+    padding: 11rem 0;
+    &-list {
+        margin-top: 4.5rem;
+        @include flex(stretch, space-between);
+    }
+    &-item {
+        width: calc(33.3333% - 2rem);
+    }
+    &-media {
+        position: relative;
+        height: 24rem;
+    }
+    &-image {
+        @include size(100%);
+        object-fit: cover;
+    }
+    &-date {
+        @include bg($third-color);
+        @include flex(center, center, column);
+        position: absolute;
+        bottom: 1rem;
+        left: -1rem;
+        font-family: $secondary-font;
+        padding: 1.5rem;
+        color: white;
+        &-number {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        &-text {
+            @include robotoItalic("white");
+        }
+    }
+    &-title {
+        text-transform: uppercase;
+        margin: 2rem 0;
+        color: $title-color;
+        line-height: 1.4;
+    }
+    &-desc {
+        font-family: $secondary-font;
+        font-size: 1.5rem;
+        color: $text-color;
+        font-weight: 300;
+        line-height: 1.6;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid $gray-dark-color;
+    }
+    &-meta {
+        @include flex(center, flex-start);
+    }
+    &-icon {
+        color: $third-color;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+    &-count {
+        @include robotoItalic;
+        margin-right: 2.5rem;
+    }
+    @include maxWidth(1023px) {
+        padding: 5rem 0;
+        &-media {
+            height: 14rem;
+        }
+        &-date {
+            padding: 1rem;
+        }
+        &-title {
+            font-size: 1.2rem;
+        }
+        &-inner {
+            font-size: 1.3rem;
+            @include textClamp(4);
+        }
+    }
+    @include maxWidth(767px) {
+        &-list {
+            display: block;
+        }
+        &-item {
+            width: 100%;
+            margin-bottom: 5rem;
+        }
+        &-media {
+            height: auto;
+        }
+        &-date {
+            bottom: 0.5rem;
+            left: -0.5rem;
+        }
+    }
+}

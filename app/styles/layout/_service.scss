@@ -1,0 +1,58 @@
+.service {
+    padding: 11rem 0 12rem;
+    @include bg(white);
+    &-list {
+        @include flex(stretch, space-between);
+        &:first-of-type {
+            border-bottom: 1px solid $gray-dark-color;
+            margin: 6.5rem 0 5rem;
+            padding-bottom: 5rem;
+        }
+    }
+    &-item {
+        flex-basis: 33.33%;
+        padding: 0 3rem;
+        @include flex(flex-start);
+    }
+    &-image {
+        width: 3rem;
+        margin-right: 3rem;
+    }
+    &-info {
+        flex-basis: calc(100% - 6rem);
+        height: 100%;
+        @include flex(flex-start, space-between, column);
+    }
+    &-title {
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        color: $title-color;
+        @include textClamp;
+    }
+    &-desc {
+        font-family: $secondary-font;
+        color: $text-color;
+        font-weight: 300;
+        line-height: 1.5;
+        @include textClamp(2);
+    }
+    @include maxWidth(1023px) {
+        padding: 7rem 0;
+        &-list {
+            display: block;
+            &:first-of-type {
+                margin: 5rem 0 5rem;
+            }
+        }
+        &-item {
+            width: 100%;
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+        &-title {
+            margin-bottom: 1rem;
+        }
+    }
+}

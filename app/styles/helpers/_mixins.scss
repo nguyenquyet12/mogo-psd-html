@@ -1,0 +1,170 @@
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin positionCenter($direction) {
+    position: absolute;
+    @if $direction=="right" {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+    @if $direction=="left" {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+    @if $direction=="top" {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @if $direction=="bottom" {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @if $direction=="both" {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@mixin position($direction) {
+    position: absolute;
+    @if $direction=="tright" {
+        top: 0;
+        right: 0;
+    }
+    @if $direction=="tleft" {
+        top: 0;
+        left: 0;
+    }
+    @if $direction=="bright" {
+        bottom: 0;
+        right: 0;
+    }
+    @if $direction=="bleft" {
+        bottom: 0;
+        left: 0;
+    }
+}
+
+@mixin bg($color: red) {
+    background-color: $color;
+}
+
+@mixin maxWidth($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin minWidth($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin flex($align-items: stretch, $justify-content: flex-start, $direction: row, $wrap: nowrap, $flex: flex) {
+    align-items: $align-items;
+    justify-content: $justify-content;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    display: $flex;
+}
+
+//hideScroll
+@mixin hideScroll() {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+//text clamp
+@mixin textClamp($row: 1, $size: 100%) {
+    display: -webkit-box;
+    -webkit-line-clamp: $row;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $size;
+    max-width: $size;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+@mixin hoverEffect($itemClass, $contentClass, $imageClass, $transform: "true") {
+    #{$itemClass} {
+        @include bg($third-color);
+        position: relative;
+        color: white;
+        #{$contentClass} {
+            transition: all 0.25s linear;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8));
+            @include flex(center, center, column);
+        }
+        #{$imageClass} {
+            transition: all 0.25s linear;
+        }
+        &:hover {
+            #{$contentClass} {
+                opacity: 1;
+                visibility: visible;
+                @if $transform=="true" {
+                    transform: translate(-1rem, -1rem);
+                }
+            }
+            @if $transform=="true" {
+                #{$imageClass} {
+                    transform: translate(-1rem, -1rem);
+                }
+            }
+        }
+    }
+}
+
+@mixin touchSlider($width: 80%, $gap: 2.5rem, $padding: 1rem) {
+    display: grid;
+    justify-content: flex-start;
+    grid-auto-columns: $width;
+    grid-auto-flow: column;
+    grid-template-columns: unset;
+    grid-column-gap: $gap;
+    overflow-x: auto;
+    padding: $padding;
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+    @include hideScroll;
+    &>* {
+        scroll-snap-align: center;
+        width: auto;
+    }
+}
+
+@mixin robotoItalic( $color: $text-color, $fsize: 1.5rem) {
+    font-family: $secondary-font;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: $color;
+}
+
+@mixin lineFooter {
+    content: "";
+    width: 6rem;
+    height: 4px;
+    background: $primary-color;
+}

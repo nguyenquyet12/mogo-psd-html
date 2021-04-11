@@ -1,0 +1,60 @@
+.people {
+    padding: 11rem 0 6rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) rgba(255, 255, 255, 0.9)), url("../images/img-people-bg.png") no-repeat center/cover;
+    &-list {
+        @include flex;
+        flex-wrap: wrap;
+        margin-top: 8.5rem;
+    }
+    &-item {
+        width: 50%;
+        @include flex;
+        padding: 0 4rem;
+        margin-bottom: 7rem;
+    }
+    &-avatar {
+        @include size(11rem);
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-right: 3rem;
+    }
+    &-name {
+        text-transform: uppercase;
+        padding: 1.5rem 0;
+    }
+    &-job {
+        display: inline-block;
+        @include robotoItalic($text-color);
+        padding-bottom: 2rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        &::after {
+            @include lineFooter;
+            @include position("bleft");
+        }
+    }
+    &-desc {
+        font-family: $secondary-font;
+        color: $text-color;
+        font-weight: 300;
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+    @include maxWidth(1023px) {
+        padding: 5rem 0 1rem;
+        &-item {
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+    }
+    @include maxWidth(767px) {
+        &-list {
+            padding: 0;
+            margin-top: 6rem;
+        }
+        &-avatar {
+            @include size(8rem);
+        }
+    }
+}
